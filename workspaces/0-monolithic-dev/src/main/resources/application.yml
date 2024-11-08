@@ -1,0 +1,98 @@
+app:
+  isTest: false
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    password: 123123
+    port: 5672
+    username: admin
+  task:
+    scheduling:
+      pool:
+        size: 5
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hoang03.it@gmail.com
+    password: semcjqpoxiwdewpi
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  redis:
+    host: localhost
+    port: 6379
+  application:
+    name: graduate_backend
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    default-locale: vi
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/graduate
+    username: postgre
+    password: 123456
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+    username: elastic
+    password: 123456
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 308715665820-kjpfnkoget308e58829e75me28ir3517.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: "${GOOGLE_REDIRECT_URI:http://localhost:4200}"
+            resource-server:
+              opaque-token:
+                introspection-uri: "https://googleapis.com"
+          facebook:
+            client-id: 1007654770988152
+            client-secret: 5adb1d315754ac7e7e26b09d4c8b8b17
+            redirect-uri: "${FACEBOOK_REDIRECT_URI:http://localhost:4200}"
+            auth-uri: https://www.facebook.com/v20.0/dialog/oauth
+            token-uri: https://graph.facebook.com/v3.0/oauth/access_token
+            user-info-uri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+            scope:
+              - email
+              - public_profile
+jwt:
+  expiration: 2592000 #30 days = 30 * 24 * 60 * 60
+  expiration-refresh-token: 5184000 #60 days = 60 * 24 * 60 * 60
+  secretKey: TaqlmGv1iEDMRiFp/pHuID1+T84IABfuA0xXh4GhiUI=
+
+
+hoang:
+  config:
+    schedule:
+      enable: true
+      disable-user: 0 0 0 * * *
+
+#logging:
+#  level:
+#    org:
+#      springframework.security: DEBUG
+api:
+  prefix: /api
+server:
+  port: 1910
+password:
+  recovery:
+    code:
+      expiration: 300

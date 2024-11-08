@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: graduate_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - graduate_network
+
+  postgres:
+    image: postgres:latest
+    container_name: graduate_postgres
+    environment:
+      POSTGRES_DB: graduate
+      POSTGRES_USER: postgre
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    networks:
+      - graduate_network
+
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    container_name: graduate_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=123456
+    ports:
+      - "9200:9200"
+    networks:
+      - graduate_network
+
+  rabbitmq:
+    image: rabbitmq:3.12.7-management
+    container_name: graduate_rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+      - 4369:4369
+    restart: always
+    environment:
+      RABBITMQ_ERLANG_COOKIE: rabbit cookie
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: 123123
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - ./.docker/rabbitmq/plugins:/opt/rabbitmq/addon-plugins
+networks:
+  graduate_network:
+    driver: bridge

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: discovery-service
+  cloud:
+    config:
+      uri: http://localhost:9911
+server:
+  port: 9922
+eureka:
+  server:
+    enableSelfPreservation: true
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

@@ -1,0 +1,3 @@
+rootProject.name = 'develop'
+include(":share")
+project(":share").projectDir = file("../1-share")
