@@ -15,4 +15,5 @@ public class QuestionResultModel {
     private String question;
     private Double score;
     private List<AnswerResultModel> answers;
+    private String explain;
 }

@@ -98,15 +98,33 @@ public class UserService {
         return savedUser;
     }
 
-    public void changePassword(String userId, ChangePasswordRequest request) throws Exception {
-        UserEntity user = userRepo.findById(userId).orElseThrow(() -> new Exception(localizationUtils.getLocalizedMessage(MessageKeys.USER_NOT_FOUND)));
-        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
-            throw new InvalidPasswordException(localizationUtils.getLocalizedMessage(MessageKeys.INVALID_PASSWORD));
+    public WrapResponse<?> changePassword(String userId, ChangePasswordRequest request){
+
+        UserEntity user = userRepo.findById(userId).orElse(null);
+        if (user == null) {
+            return WrapResponse.builder()
+                    .isSuccess(false)
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .message(localizationUtils.getLocalizedMessage(MessageKeys.USER_NOT_FOUND))
+                    .build();
         }
-        if (request.getPassword().equals(request.getRetypePassword())) {
-            throw new RuntimeException(localizationUtils.getLocalizedMessage(MessageKeys.PASSWORD_NOT_MATCH));
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+            return WrapResponse.builder()
+                    .isSuccess(false)
+                    .status(HttpStatus.BAD_REQUEST)
+                    .message(localizationUtils.getLocalizedMessage(MessageKeys.INVALID_PASSWORD))
+                    .build();
+        }
+        if (!request.getPassword().equals(request.getRetypePassword())) {
+            return WrapResponse.builder()
+                    .isSuccess(false)
+                    .status(HttpStatus.BAD_REQUEST)
+                    .message(localizationUtils.getLocalizedMessage(MessageKeys.PASSWORD_NOT_MATCH))
+                    .build();
         }
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        userRepo.save(user);
+        return WrapResponse.builder().isSuccess(true).status(HttpStatus.OK).message(localizationUtils.getLocalizedMessage(MessageKeys.PASSWORD_RESET_SUCCESSFULLY)).build();
     }
 
     public void changeAvatar(String userId, String imageName) throws Exception {

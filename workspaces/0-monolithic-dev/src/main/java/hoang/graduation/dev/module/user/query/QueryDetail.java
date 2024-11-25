@@ -1,5 +1,6 @@
 package hoang.graduation.dev.module.user.query;
 
+import hoang.graduation.dev.component.CurrentUser;
 import hoang.graduation.dev.component.SearchUtils;
 import hoang.graduation.dev.module.user.doc.UserDoc;
 import hoang.graduation.dev.module.user.entity.UserEntity;
@@ -25,6 +26,12 @@ import java.util.List;
 public class QueryDetail {
     private final UserRepo userRepo;
     private final SearchUtils searchUtils;
+
+    public WrapResponse<?> getDetail(){
+        UserEntity user = CurrentUser.get();
+        boolean isSuccess = user != null;
+        return WrapResponse.builder().isSuccess(isSuccess).status(isSuccess ? HttpStatus.OK : HttpStatus.UNAUTHORIZED).data(CurrentUser.get()).build();
+    }
 
     public WrapResponse<?> getDetail(String id){
         UserEntity user = userRepo.findById(id).orElse(null);

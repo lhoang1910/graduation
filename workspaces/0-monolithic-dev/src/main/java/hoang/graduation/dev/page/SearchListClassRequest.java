@@ -9,6 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchListClassRequest extends BasePage {
+    private String userId;
     private String searchingKeys;
     private Integer limitSlot;
     private Integer practiceAmount;

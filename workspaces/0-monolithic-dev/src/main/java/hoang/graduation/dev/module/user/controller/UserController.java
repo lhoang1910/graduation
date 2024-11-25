@@ -44,6 +44,7 @@ public class UserController {
         UserEntity updatedUser = userService.updateUser(id, request);
         return ResponseEntity.ok().body(
                 WrapResponse.builder()
+                        .isSuccess(true)
                         .message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATE_USER_DETAIL_SUCCESS))
                         .data(updatedUser)
                         .status(HttpStatus.OK)
@@ -52,27 +53,8 @@ public class UserController {
     }
 
     @PostMapping("{id}/update-password")
-    public ResponseEntity<WrapResponse<?>> resetPassword(@Valid @PathVariable String id, @Valid ChangePasswordRequest request) {
-        try {
-            userService.changePassword(id, request);
-            return ResponseEntity.ok(WrapResponse.builder()
-                    .isSuccess(true)
-                    .message(localizationUtils.getLocalizedMessage(MessageKeys.RESET_PASSWORD_SUCCESS))
-                    .status(HttpStatus.OK)
-                    .build());
-        } catch (InvalidPasswordException e) {
-            return ResponseEntity.ok(WrapResponse.builder()
-                    .isSuccess(false)
-                    .message(localizationUtils.getLocalizedMessage(MessageKeys.INVALID_PASSWORD))
-                    .status(HttpStatus.BAD_REQUEST)
-                    .build());
-        } catch (Exception e) {
-            return ResponseEntity.ok(WrapResponse.builder()
-                    .isSuccess(false)
-                    .message(localizationUtils.getLocalizedMessage(MessageKeys.USER_NOT_FOUND))
-                    .status(HttpStatus.BAD_REQUEST)
-                    .build());
-        }
+    public WrapResponse<?> resetPassword(@Valid @PathVariable String id, @Valid @RequestBody ChangePasswordRequest request) {
+        return userService.changePassword(id, request);
     }
 
     @PostMapping(value = "/upload-avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -152,5 +134,10 @@ public class UserController {
     @GetMapping("/user/{id}")
     public WrapResponse<?> getDetail(@PathVariable String id) {
         return queryDetail.getDetail(id);
+    }
+
+    @GetMapping("/internal/profile")
+    public WrapResponse<?> getDetail() {
+        return queryDetail.getDetail();
     }
 }

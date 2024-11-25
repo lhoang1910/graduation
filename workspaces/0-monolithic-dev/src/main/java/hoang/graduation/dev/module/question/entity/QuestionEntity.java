@@ -32,6 +32,7 @@ public class QuestionEntity {
     @Column(columnDefinition = JpaType.JSON_BINARY)
     @Type(type = JpaType.JSON_BINARY)
     private List<AnswerModel> answers;
+    private String explain;
 
     private Date createdAt;
     private Date updatedAt;

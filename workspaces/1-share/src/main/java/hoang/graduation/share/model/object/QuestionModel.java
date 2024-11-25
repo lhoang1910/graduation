@@ -16,4 +16,6 @@ public class QuestionModel {
     private String question;
     private int type;
     private List<AnswerModel> answers;
+    private String explain;
+    private String explainFilePath;
 }

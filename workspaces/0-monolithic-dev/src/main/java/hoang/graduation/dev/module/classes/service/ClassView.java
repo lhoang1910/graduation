@@ -8,11 +8,14 @@ import hoang.graduation.dev.module.classes.entity.ClassEntity;
 import hoang.graduation.dev.module.classes.repo.ClassESRepo;
 import hoang.graduation.dev.module.classes.repo.ClassRepo;
 import hoang.graduation.dev.module.user.entity.UserEntity;
+import hoang.graduation.dev.module.user.repo.UserRepo;
 import hoang.graduation.dev.page.BaseSort;
 import hoang.graduation.dev.page.SearchListClassRequest;
 import hoang.graduation.share.constant.Role;
 import hoang.graduation.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.data.domain.PageRequest;
@@ -32,6 +35,7 @@ public class ClassView {
     private final ClassESRepo classESRepo;
     private final SearchUtils searchUtils;
     private final FinderUtils finderUtils;
+    private final UserRepo userRepo;
 
     public WrapResponse<?> getDetail(String id) {
         ClassEntity clss = classRepo.findById(id).orElse(null);
@@ -44,7 +48,7 @@ public class ClassView {
     }
 
     public WrapResponse<Object> searchClassList(SearchListClassRequest request) {
-        UserEntity crnt = CurrentUser.get();
+        UserEntity crnt = userRepo.findById(request.getUserId()).orElse(null);
         if (crnt == null) {
             return WrapResponse.builder()
                     .isSuccess(false)
@@ -53,26 +57,18 @@ public class ClassView {
         }
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 
-        if (crnt.getRole() != Role.ADMIN){
+        if (crnt.getRole() != Role.ADMIN) {
             List<String> codes = finderUtils.getUserClassCodes(crnt.getEmail());
             BoolQueryBuilder roleQuery = QueryBuilders.boolQuery();
-            roleQuery.should(QueryBuilders.matchQuery("createdBy", crnt.getEmail()));
-            roleQuery.should(QueryBuilders.termsQuery("classCode", codes));
+            roleQuery.should(QueryBuilders.matchQuery("createdByEmail", crnt.getEmail()));
+            if (CollectionUtils.isNotEmpty(codes)) {
+                roleQuery.should(QueryBuilders.termsQuery("classCode", codes));
+            }
             boolQuery.must(roleQuery);
         }
 
-        if (request.getSearchingKeys() != null && !request.getSearchingKeys().isEmpty()) {
+        if (StringUtils.isNotBlank(request.getSearchingKeys())) {
             boolQuery.must(QueryBuilders.matchQuery("searchingKeys", request.getSearchingKeys()));
-        }
-
-        if (request.getLimitSlot() != null) {
-            boolQuery.filter(QueryBuilders.termQuery("limitSlot", request.getLimitSlot()));
-        }
-        if (request.getPracticeAmount() != null) {
-            boolQuery.filter(QueryBuilders.termQuery("practiceAmount", request.getPracticeAmount()));
-        }
-        if (request.getExamineAmount() != null) {
-            boolQuery.filter(QueryBuilders.termQuery("examineAmount", request.getExamineAmount()));
         }
 
         if (request.getCreateAtFrom() != null && request.getCreateAtTo() != null) {

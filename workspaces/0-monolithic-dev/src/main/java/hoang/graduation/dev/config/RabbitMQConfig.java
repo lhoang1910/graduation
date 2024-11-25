@@ -67,4 +67,24 @@ public class RabbitMQConfig {
     Queue deleteExam() {
         return QueueBuilder.durable(RabbitQueueMessage.QUEUE_SEND_DELETE_EXAM).build();
     }
+
+    @Bean
+    Queue createExamSession() {
+        return QueueBuilder.durable(RabbitQueueMessage.QUEUE_SEND_CREATE_EXAM_SESSION).build();
+    }
+
+    @Bean
+    Queue updateExamSession() {
+        return QueueBuilder.durable(RabbitQueueMessage.QUEUE_SEND_UPDATE_EXAM_SESSION).build();
+    }
+
+    @Bean
+    Queue deleteExamSession() {
+        return QueueBuilder.durable(RabbitQueueMessage.QUEUE_SEND_DELETE_EXAM_SESSION).build();
+    }
+
+    @Bean
+    Queue submitExam() {
+        return QueueBuilder.durable(RabbitQueueMessage.QUEUE_SEND_SUBMIT_EXAM_SESSION).build();
+    }
 }
