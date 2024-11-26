@@ -30,7 +30,8 @@ public class ExamSessionEntity {
     private String name;
     private String description;
 
-    private boolean isPublic;       // Nếu public thì không cần set classCodes
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isOpen;       // Nếu public thì không cần set classCodes
 
     @Column(columnDefinition = JpaType.JSON_BINARY)
     @Type(type = JpaType.JSON_BINARY)

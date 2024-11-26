@@ -37,7 +37,7 @@ public class ExamSessionService {
                     .message(localizationUtils.getLocalizedMessage(MessageKeys.EXAM_NOT_FOUND))
                     .build();
         }
-        if (!request.isPublic() && CollectionUtils.isEmpty(request.getClassCodes())){
+        if (!request.getIsOpen() && CollectionUtils.isEmpty(request.getClassCodes())){
             return WrapResponse.builder()
                     .isSuccess(false)
                     .status(HttpStatus.BAD_REQUEST)
@@ -83,7 +83,7 @@ public class ExamSessionService {
                     .message(localizationUtils.getLocalizedMessage(MessageKeys.EXAM_NOT_FOUND))
                     .build();
         }
-        if (!request.isPublic() && CollectionUtils.isEmpty(request.getClassCodes())){
+        if (!request.getIsOpen() && CollectionUtils.isEmpty(request.getClassCodes())){
             return WrapResponse.builder()
                     .isSuccess(false)
                     .status(HttpStatus.BAD_REQUEST)

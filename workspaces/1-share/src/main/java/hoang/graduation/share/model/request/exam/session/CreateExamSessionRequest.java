@@ -15,7 +15,8 @@ public class CreateExamSessionRequest {
     private String examCode;
     private String name;
     private String description;
-    private boolean isPublic;       // Nếu public thì không cần set classCodes
+    @Builder.Default
+    private Boolean isOpen = false;       // Nếu public thì không cần set classCodes
     private List<String> classCodes;
     // setting
     private int time;

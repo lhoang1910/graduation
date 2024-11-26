@@ -17,7 +17,7 @@ public class ExamSessionController {
     private final ExamSessionView examSessionView;
 
     @PostMapping("/create")
-    public WrapResponse<?> createExamSession(CreateExamSessionRequest request) {
+    public WrapResponse<?> createExamSession(@RequestBody CreateExamSessionRequest request) {
         return examSessionService.createExamSession(request);
     }
 

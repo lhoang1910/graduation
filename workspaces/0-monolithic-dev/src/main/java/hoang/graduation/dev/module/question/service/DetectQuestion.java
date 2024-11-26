@@ -99,9 +99,7 @@ public class DetectQuestion {
             }
 
             String questionText = questionMatcher.group(2) != null ? questionMatcher.group(2) : questionMatcher.group(3);
-            String questionId = UUID.randomUUID().toString();
             currentQuestion = new QuestionModel();
-            currentQuestion.setId(questionId);
             currentQuestion.setQuestion(questionText);
             currentQuestion.setAnswers(new ArrayList<>());
 
@@ -121,7 +119,6 @@ public class DetectQuestion {
                 String answerText = answerMatcher.group(2);
                 if (StringUtils.isNotBlank(answerKey) && StringUtils.isNotBlank(answerText)) {
                     currentQuestion.getAnswers().add(AnswerModel.builder()
-                                    .id(UUID.randomUUID().toString())
                                     .answer(answerText)
                                     .isCorrect(false)
 
