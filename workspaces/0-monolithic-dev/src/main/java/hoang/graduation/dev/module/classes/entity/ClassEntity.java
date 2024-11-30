@@ -21,7 +21,7 @@ import java.util.List;
 @Builder
 @Table(name = "classes")
 @TypeDef(name = JpaType.JSON_BINARY, typeClass = JsonBinaryType.class)
-public class ClassEntity {
+public class  ClassEntity {
     @Id
     private String id;
     private String classCode;

@@ -11,10 +11,9 @@ import hoang.graduation.share.constant.PointType;
 import hoang.graduation.share.constant.rm.RabbitQueueMessage;
 import hoang.graduation.share.model.object.AnswerResultModel;
 import hoang.graduation.share.model.object.QuestionResultModel;
-import hoang.graduation.share.model.request.result.StartResultRequest;
 import hoang.graduation.share.model.request.result.SubmitResultRequest;
 import hoang.graduation.share.model.response.WrapResponse;
-import hoang.graduation.share.utils.DateTimeUtils;
+import hoang.graduation.share.utils.DateTimesUtils;
 import hoang.graduation.share.utils.MathUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
@@ -71,7 +70,7 @@ public class ResultService {
         ResultDetailEntity newResult = resultDetailRepo.findById(resultId).orElse(null);
         assert newResult != null;
         newResult.setSubmitAt(new Date());
-        newResult.setTimeTracking(DateTimeUtils.calculateMinutesDifference(new Date(), newResult.getStartAt()));
+        newResult.setTimeTracking(DateTimesUtils.calculateMinutesDifference(new Date(), newResult.getStartAt()));
         newResult.setQuestionResults(request.getQuestionResults());
 
         if (CollectionUtils.isEmpty(request.getQuestionResults())) {

@@ -34,6 +34,7 @@ dependencies {
     implementation 'commons-io:commons-io:2.11.0'
     implementation 'org.modelmapper:modelmapper:3.1.1'
     implementation 'org.springframework.data:spring-data-jpa:2.7.0'
+    implementation 'org.apache.poi:poi:5.2.3'
 }
 
 tasks.named('test') {

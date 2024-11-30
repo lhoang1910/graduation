@@ -11,4 +11,6 @@ public interface ClassRepo extends JpaRepository<ClassEntity, String> {
 
     @Query("select classCode from ClassEntity where userEmails in :userEmail")
     List<String> findClassCodeByUserEmailIn(String userEmail);
+
+    boolean existsByClassCode(String classCode);
 }

@@ -1,11 +1,17 @@
 package hoang.graduation.dev.module.classes.controller;
+
 import hoang.graduation.dev.module.classes.service.ClassService;
 import hoang.graduation.dev.module.classes.service.ClassView;
+import hoang.graduation.dev.module.user.service.UserService;
 import hoang.graduation.dev.page.SearchListClassRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import hoang.graduation.share.model.request.classes.CreateClassRequest;
 import hoang.graduation.share.model.response.WrapResponse;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 @RestController
@@ -15,6 +21,7 @@ public class ClassController {
 
     private final ClassService classService;
     private final ClassView classView;
+    private final UserService userService;
 
     @PostMapping("/create")
     public WrapResponse<?> createClass(@RequestBody CreateClassRequest request) {
@@ -59,5 +66,18 @@ public class ClassController {
     @GetMapping("/{id}")
     public WrapResponse<?> getAllClass(@PathVariable String id) {
         return classView.getDetail(id);
+    }
+
+    @PostMapping("/{id}/import-class-user")
+    public WrapResponse<?> importClassUser(@PathVariable String id, @RequestPart("file") MultipartFile file) {
+        try {
+            return userService.importClassUser(id, file.getBytes());
+        } catch (IOException e) {
+            return WrapResponse.builder()
+                    .isSuccess(false)
+                    .status(HttpStatus.BAD_REQUEST)
+                    .message("Có lỗi xảy ra trong quá trình import")
+                    .build();
+        }
     }
 }
