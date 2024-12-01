@@ -31,6 +31,7 @@ public class ResultDetailEntity {
     private String examSessionId;
     private String classCode;
     private String examSessionAuthor;
+    private String examRandomCode;
 
     private String studentId;
     private String studentName;
@@ -49,6 +50,9 @@ public class ResultDetailEntity {
     private int notAnswer;
 
     private Integer rank;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isSubmitted;
 
     @Column(columnDefinition = JpaType.JSON_BINARY)
     @Type(type = JpaType.JSON_BINARY)

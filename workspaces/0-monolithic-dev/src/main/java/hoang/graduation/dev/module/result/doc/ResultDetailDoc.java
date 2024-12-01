@@ -38,7 +38,7 @@ public class ResultDetailDoc {
     @Field(type = FieldType.Keyword)
     private Date startAt;
     @Field(type = FieldType.Keyword)
-    private int submitAt;
+    private Date submitAt;
     @Field(type = FieldType.Keyword)
     private int correctAnswer;
     @Field(type = FieldType.Keyword)

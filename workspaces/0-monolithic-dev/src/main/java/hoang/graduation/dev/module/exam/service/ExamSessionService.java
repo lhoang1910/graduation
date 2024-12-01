@@ -54,6 +54,7 @@ public class ExamSessionService {
                     .build();
         }
         newExamSession.setId(UUID.randomUUID().toString());
+        newExamSession.setStartSequenceNumber(0);
         newExamSession.setCreatedDate(new Date());
         newExamSession.setUpdatedDate(new Date());
         newExamSession.setCreatedBy(crnt.getEmail());

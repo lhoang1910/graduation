@@ -29,6 +29,7 @@ public class ExamSessionEntity {
     private String examCode;
     private String name;
     private String description;
+    private String examRandomCode;
 
     @Column(columnDefinition = "boolean default false")
     private Boolean isOpen;       // Nếu public thì không cần set classCodes
@@ -44,9 +45,14 @@ public class ExamSessionEntity {
     private Date expirationDate;
 
     private int questionAmount;     // số lượng câu hỏi trong đề
-    private int randomAmount;       // Mã đề
+    @Builder.Default
+    private int randomAmount = 1;       // Mã đề
     private int limitation;         // Số lượt làm tối đa
     private int pointType;
+
+    @Builder.Default
+    @Column(columnDefinition = "int default 0")
+    private int startSequenceNumber = 0;
 
     private String createdBy;
     private String updatedBy;
