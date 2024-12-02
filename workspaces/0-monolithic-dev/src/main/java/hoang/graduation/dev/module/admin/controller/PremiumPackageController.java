@@ -1,8 +1,8 @@
 package hoang.graduation.dev.module.admin.controller;
 
 import hoang.graduation.dev.module.premium.service.PremiumPackageService;
-import hoang.graduation.share.model.request.premium.CreatePremiumPackageRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.request.premium.CreatePremiumPackageRequest;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

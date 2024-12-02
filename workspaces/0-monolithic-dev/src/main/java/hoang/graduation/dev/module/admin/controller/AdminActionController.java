@@ -1,7 +1,7 @@
 package hoang.graduation.dev.module.admin.controller;
 
 import hoang.graduation.dev.module.admin.action.UserAction;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

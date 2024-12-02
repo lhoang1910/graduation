@@ -1,6 +1,6 @@
 package hoang.graduation.dev.config;
 
-import hoang.graduation.share.utils.WebUtils;
+import hoang.graduation.dev.share.utils.WebUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;

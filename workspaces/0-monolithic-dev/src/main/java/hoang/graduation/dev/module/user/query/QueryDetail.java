@@ -7,7 +7,7 @@ import hoang.graduation.dev.module.user.entity.UserEntity;
 import hoang.graduation.dev.module.user.repo.UserRepo;
 import hoang.graduation.dev.page.BaseSort;
 import hoang.graduation.dev.page.SearchListUserRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;

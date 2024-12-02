@@ -5,7 +5,7 @@ import hoang.graduation.dev.module.admin.doc.FeatureManagementDoc;
 import hoang.graduation.dev.module.admin.repo.FeatureESRepo;
 import hoang.graduation.dev.page.BaseSort;
 import hoang.graduation.dev.page.SearchListFeatureRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;

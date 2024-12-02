@@ -1,6 +1,6 @@
 package hoang.graduation.dev.config;
 
-import hoang.graduation.share.constant.rm.RabbitQueueMessage;
+import hoang.graduation.dev.share.constant.rm.RabbitQueueMessage;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.context.annotation.Bean;

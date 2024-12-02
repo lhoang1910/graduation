@@ -1,7 +1,7 @@
 package hoang.graduation.dev.module.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import hoang.graduation.share.constant.time.DateTimeFomartter;
+import hoang.graduation.dev.share.constant.time.DateTimeFomartter;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -3,8 +3,8 @@ package hoang.graduation.dev.module.exam.controller;
 import hoang.graduation.dev.module.exam.service.ExamService;
 import hoang.graduation.dev.module.exam.view.ExamView;
 import hoang.graduation.dev.page.SearchListExamRequest;
-import hoang.graduation.share.model.request.exam.CreateExamRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.request.exam.CreateExamRequest;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/develop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/develop.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/graduation.iml" filepath="$PROJECT_DIR$/graduation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1077001698/hoang.graduation.develop.share.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1077001698/hoang.graduation.develop.share.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/share.main.iml" filepath="$PROJECT_DIR$/.idea/modules/share.main.iml" />
     </modules>
   </component>

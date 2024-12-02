@@ -1,8 +1,8 @@
 package hoang.graduation.dev.module.question.controller;
 
 import hoang.graduation.dev.module.question.service.DetectQuestion;
-import hoang.graduation.share.model.object.QuestionModel;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.object.QuestionModel;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;

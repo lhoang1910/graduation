@@ -1,6 +1,6 @@
 package hoang.graduation.dev.module.schedule;
 
-import hoang.graduation.share.constant.rm.RabbitQueueMessage;
+import hoang.graduation.dev.share.constant.rm.RabbitQueueMessage;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

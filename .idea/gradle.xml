@@ -18,7 +18,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/workspaces/0-monolithic-dev" />
-            <option value="$PROJECT_DIR$/workspaces/1-share" />
           </set>
         </option>
       </GradleProjectSettings>

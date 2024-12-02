@@ -4,7 +4,7 @@ import hoang.graduation.dev.component.SearchUtils;
 import hoang.graduation.dev.module.premium.doc.PremiumPackageDoc;
 import hoang.graduation.dev.page.BaseSort;
 import hoang.graduation.dev.page.SearchListPremiumPackageRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;

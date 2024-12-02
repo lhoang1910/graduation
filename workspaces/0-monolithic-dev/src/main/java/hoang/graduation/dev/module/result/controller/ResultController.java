@@ -3,8 +3,8 @@ package hoang.graduation.dev.module.result.controller;
 import hoang.graduation.dev.module.result.ResultView;
 import hoang.graduation.dev.module.result.service.ResultService;
 import hoang.graduation.dev.page.SearchListResultRequest;
-import hoang.graduation.share.model.request.result.SubmitResultRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.request.result.SubmitResultRequest;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

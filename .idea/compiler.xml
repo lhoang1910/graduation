@@ -8,8 +8,12 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
         </processorPath>
         <module name="develop.main" />
-        <module name="hoang.graduation.develop.share.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hoang.graduation.develop.share" target="17" />
+      <module name="hoang.graduation.develop.share.main" target="17" />
+      <module name="hoang.graduation.develop.share.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

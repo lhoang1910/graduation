@@ -1,6 +1,6 @@
 package hoang.graduation.dev.module.exam.doc;
 
-import hoang.graduation.share.constant.JpaType;
+import hoang.graduation.dev.share.constant.JpaType;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.elasticsearch.annotations.Document;

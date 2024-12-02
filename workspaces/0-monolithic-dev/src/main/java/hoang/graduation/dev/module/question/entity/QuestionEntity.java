@@ -1,8 +1,8 @@
 package hoang.graduation.dev.module.question.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import hoang.graduation.share.model.object.AnswerModel;
-import hoang.graduation.share.constant.JpaType;
+import hoang.graduation.dev.share.constant.JpaType;
+import hoang.graduation.dev.share.model.object.AnswerModel;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;

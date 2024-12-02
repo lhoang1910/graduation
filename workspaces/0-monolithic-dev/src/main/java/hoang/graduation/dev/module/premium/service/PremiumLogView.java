@@ -5,7 +5,7 @@ import hoang.graduation.dev.module.premium.doc.PremiumLogDoc;
 import hoang.graduation.dev.module.premium.repo.PremiumLogRepo;
 import hoang.graduation.dev.page.BaseSort;
 import hoang.graduation.dev.page.SearchListPremiumLogRequest;
-import hoang.graduation.share.model.response.WrapResponse;
+import hoang.graduation.dev.share.model.response.WrapResponse;
 import lombok.RequiredArgsConstructor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
