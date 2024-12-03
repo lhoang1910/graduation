@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   redis:
-    image: redis:latest
+    image: hoang003/graduate_redis:latest
     container_name: graduate_redis
     ports:
       - "6379:6379"
@@ -10,7 +10,7 @@ services:
       - graduate_network
 
   postgres:
-    image: postgres:latest
+    image: hoang003/graduate_postgres:latest
     container_name: graduate_postgres
     environment:
       POSTGRES_DB: graduate
@@ -22,7 +22,7 @@ services:
       - graduate_network
 
   elasticsearch:
-    image: elasticsearch:7.10.1
+    image: hoang003/graduate_elasticsearch:7.10.1
     container_name: graduate_elasticsearch
     environment:
       - discovery.type=single-node
@@ -33,7 +33,7 @@ services:
       - graduate_network
 
   rabbitmq:
-    image: rabbitmq:3.12.7-management
+    image: hoang003/graduate_rabbitmq:3.12.7
     container_name: graduate_rabbitmq
     ports:
       - 15672:15672
